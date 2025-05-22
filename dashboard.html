@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Attrition Survey</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(45deg, #1a53b6be, #228b22be);
+      }
+    
+      h1,
+      h2 {
+        text-align: center;
+        color: #d1e2ff; /* Ocean blue */
+        margin-top: 30px;
+      }
+    
+      p {
+        text-align: center;
+        color: #000000;
+      }
+    
+      form {
+        max-width: 1000px;
+        margin: 30px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+    
+      fieldset {
+        margin-bottom: 30px;
+        border: 1px solid #d0d7de;
+        padding: 20px;
+        border-radius: 8px;
+      }
+    
+      legend {
+        font-weight: 600;
+        padding: 0 10px;
+        color: #0b3d91; /* Ocean blue */
+      }
+    
+      label {
+        display: block;
+        margin-top: 15px;
+        font-size: 14px;
+        color: #555;
+      }
+    
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        background-color: #fafafa;
+        transition: all 0.3s ease;
+      }
+    
+      input:focus,
+      select:focus {
+        border-color: #228b22; /* Forest green */
+        background-color: #fff;
+        outline: none;
+      }
+    
+      button {
+        background-color: #0b3d91; /* Ocean blue */
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+    
+      button:hover {
+        background-color: #228b22; /* Forest green */
+      }
+    
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+    
+      @media (max-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    
+      #resultSection {
+        display: none;
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+    
+      #resultSection h2 {
+        text-align: center;
+        color: #0b3c91a5; /* Ocean blue */
+      }
+    
+      #resultMessage {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #0b3d91;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <h1>Employee Attrition Survey</h1>
+    <p>Please fill out the form carefully. Your input is valuable!</p>
+
+    <form id="surveyForm">
+      <fieldset>
+        <legend>Personal Information</legend>
+        <div class="form-grid">
+          <label
+            >Age: <input type="number" name="Age" id="age" max="100" required
+          /></label>
+          <label
+            >Gender:
+            <select name="Gender" id="gender" required>
+              <option value="" selected>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+          <label
+            >Marital Status:
+            <select name="MaritalStatus" id="maritalStatus" required>
+              <option value="" selected>Select</option>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Divorced">Divorced</option>
+            </select>
+          </label>
+          <label
+            >Distance From Home:<input
+              type="number"
+              name="DistanceFromHome"
+              id="distanceFromHome"
+              required
+          /></label>
+          <label
+            >Department:
+            <select name="Department" id="department" required>
+              <option value="" selected>Select</option>
+              <option value="Human Resources">Human Resources</option>
+              <option value="Research & Development">
+                Research & Development
+              </option>
+              <option value="Sales">Sales</option>
+            </select>
+          </label>
+          <label
+            >Job Role:
+            <select name="JobRole" id="jobRole" required>
+              <option value="" selected>Select</option>
+              <option value="Manager">Manager</option>
+              <option value="Developer">Developer</option>
+              <option value="Analyst">Analyst</option>
+              <option value="Sales Executive">Sales Executive</option>
+              <option value="Support Staff">Support Staff</option>
+              <option value="Laboratory Technician">Laboratory Technician</option>
+              <option value="Research Scientist">Research Scientist</option>
+            </select>
+          </label>
+          <label
+            >Job Level:
+            <select name="JobLevel" id="jobLevel" required>
+              <option value="" selected>Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+          <label
+            >Job Involvement:
+            <select name="JobInvolvement" id="jobInvolvement" required>
+              <option value="" selected>Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+          <label
+            >Job Satisfaction:
+            <select name="JobSatisfaction" id="jobSatisfaction" required>
+              <option value="" selected>Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+          <label
+            >Environment Satisfaction:
+            <select
+              name="EnvironmentSatisfaction"
+              id="environmentSatisfaction"
+              required
+            >
+              <option value="" selected>Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+          <label
+            >Relationship Satisfaction:
+            <select
+              name="RelationshipSatisfaction"
+              id="relationshipSatisfaction"
+              required
+            >
+              <option value="" selected>Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+          <label
+            >Performance Rating:
+            <select name="PerformanceRating" id="performanceRating" required>
+              <option value="" selected>Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Compensation</legend>
+        <div class="form-grid">
+          <label
+            >Monthly Income:<input
+              type="number"
+              name="MonthlyIncome"
+              id="monthlyIncome"
+              required
+          /></label>
+          <label
+            >Hourly Rate:<input
+              type="number"
+              name="HourlyRate"
+              id="hourlyRate"
+              required
+          /></label>
+          <label
+            >Daily Rate:<input
+              type="number"
+              name="DailyRate"
+              id="dailyRate"
+              required
+          /></label>
+          <label
+            >Monthly Rate:<input
+              type="number"
+              name="MonthlyRate"
+              id="monthlyRate"
+              required
+          /></label>
+          <label
+            >Stock Option Level:
+            <select name="StockOptionLevel" id="stockOptionLevel" required>
+              <option value="" selected>Select</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </label>
+          <label
+            >Percent Salary Hike:<input
+              type="number"
+              name="PercentSalaryHike"
+              id="percentSalaryHike"
+              required
+          /></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Work Details</legend>
+        <div class="form-grid">
+          <label
+            >Business Travel:
+            <select name="BusinessTravel" id="businessTravel" required>
+              <option value="" selected>Select</option>
+              <option value="Travel_Rarely">Travel_Rarely</option>
+              <option value="Travel_Frequently">Travel_Frequently</option>
+              <option value="Non-Travel">Non-Travel</option>
+            </select>
+          </label>
+          <label
+            >Education:
+            <select name="Education" id="education" required>
+              <option value="" selected>Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+          <label
+            >Education Field:
+            <select name="EducationField" id="educationField" required>
+              <option value="" selected>Select</option>
+              <option value="Life Sciences">Life Sciences</option>
+              <option value="Other">Other</option>
+              <option value="Medical">Medical</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Technical Degree">Technical Degree</option>
+              <option value="Human Resources">Human Resources</option>
+            </select>
+          </label>
+          <label
+            >Num Companies Worked:<input
+              type="number"
+              name="NumCompaniesWorked"
+              id="numCompaniesWorked"
+              required
+          /></label>
+          <label
+            >Total Working Years:<input
+              type="number"
+              name="TotalWorkingYears"
+              id="totalWorkingYears"
+              required
+          /></label>
+          <label
+            >Training Times Last Year:<input
+              type="number"
+              name="TrainingTimesLastYear"
+              id="trainingTimesLastYear"
+              required
+          /></label>
+          <label
+            >Work Life Balance:
+            <select name="WorkLifeBalance" id="workLifeBalance" required>
+              <option value="" selected>Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+          <label
+            >Years At Company:<input
+              type="number"
+              name="YearsAtCompany"
+              id="yearsAtCompany"
+              required
+          /></label>
+          <label
+            >Years In Current Role:<input
+              type="number"
+              name="YearsInCurrentRole"
+              id="yearsInCurrentRole"
+              required
+          /></label>
+          <label
+            >Years Since Last Promotion:<input
+              type="number"
+              name="YearsSinceLastPromotion"
+              id="yearsSinceLastPromotion"
+              required
+          /></label>
+          <label
+            >Years With Current Manager:<input
+              type="number"
+              name="YearsWithCurrManager"
+              id="yearsWithCurrManager"
+              required
+          /></label>
+          <label
+            >Over Time:
+            <select name="OverTime" id="overTime" required>
+              <option value="" selected>Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Employee Info</legend>
+        <div class="form-grid">
+          <label
+            >Employee Number:<input
+              type="number"
+              name="EmployeeNumber"
+              id="employeeNumber"
+              required
+          /></label>
+          <label
+            >Employee Count:
+            <input
+              type="number"
+              name="EmployeeCount"
+              id="employeeCount"
+              value="1"
+              readonly
+            />
+          </label>
+          <label
+            >Standard Hours:<input
+              type="number"
+              name="StandardHours"
+              id="standardHours"
+              value="80"
+              readonly
+          /></label>
+          <label
+            >Over 18:
+            <select name="Over18" id="over18" required>
+              <option value="" selected>Select</option>
+              <option value="Y">Y</option>
+            </select>
+          </label>
+        </div>
+      </fieldset>
+
+      <button type="submit">Submit Survey</button>
+    </form>
+    <!-- Add a section to display the API response -->
+    <div id="resultSection">
+      <h2>Prediction Result</h2>
+      <p id="resultMessage"></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("surveyForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the form from refreshing the page
+
+          // Collect form data
+          const requestData = {
+            inputs: [
+              {
+                Age: parseInt(document.getElementById("age").value),
+                BusinessTravel: document.getElementById("businessTravel").value,
+                DailyRate: parseInt(document.getElementById("dailyRate").value),
+                Department: document.getElementById("department").value,
+                DistanceFromHome: parseInt(
+                  document.getElementById("distanceFromHome").value
+                ),
+                Education: parseInt(document.getElementById("education").value),
+                EducationField: document.getElementById("educationField").value,
+                EmployeeCount: parseInt(
+                  document.getElementById("employeeCount").value
+                ),
+                EmployeeNumber: parseInt(
+                  document.getElementById("employeeNumber").value
+                ),
+                EnvironmentSatisfaction: parseInt(
+                  document.getElementById("environmentSatisfaction").value
+                ),
+                Gender: document.getElementById("gender").value,
+                HourlyRate: parseInt(
+                  document.getElementById("hourlyRate").value
+                ),
+                JobInvolvement: parseInt(
+                  document.getElementById("jobInvolvement").value
+                ),
+                JobLevel: parseInt(document.getElementById("jobLevel").value),
+                JobRole: document.getElementById("jobRole").value,
+                JobSatisfaction: parseInt(
+                  document.getElementById("jobSatisfaction").value
+                ),
+                MaritalStatus: document.getElementById("maritalStatus").value,
+                MonthlyIncome: parseInt(
+                  document.getElementById("monthlyIncome").value
+                ),
+                MonthlyRate: parseInt(
+                  document.getElementById("monthlyRate").value
+                ),
+                NumCompaniesWorked: parseInt(
+                  document.getElementById("numCompaniesWorked").value
+                ),
+                Over18: document.getElementById("over18").value,
+                OverTime: document.getElementById("overTime").value,
+                PercentSalaryHike: parseInt(
+                  document.getElementById("percentSalaryHike").value
+                ),
+                PerformanceRating: parseInt(
+                  document.getElementById("performanceRating").value
+                ),
+                RelationshipSatisfaction: parseInt(
+                  document.getElementById("relationshipSatisfaction").value
+                ),
+                StandardHours: parseInt(
+                  document.getElementById("standardHours").value
+                ),
+                StockOptionLevel: parseInt(
+                  document.getElementById("stockOptionLevel").value
+                ),
+                TotalWorkingYears: parseInt(
+                  document.getElementById("totalWorkingYears").value
+                ),
+                TrainingTimesLastYear: parseInt(
+                  document.getElementById("trainingTimesLastYear").value
+                ),
+                WorkLifeBalance: parseInt(
+                  document.getElementById("workLifeBalance").value
+                ),
+                YearsAtCompany: parseInt(
+                  document.getElementById("yearsAtCompany").value
+                ),
+                YearsInCurrentRole: parseInt(
+                  document.getElementById("yearsInCurrentRole").value
+                ),
+                YearsSinceLastPromotion: parseInt(
+                  document.getElementById("yearsSinceLastPromotion").value
+                ),
+                YearsWithCurrManager: parseInt(
+                  document.getElementById("yearsWithCurrManager").value
+                ),
+              },
+            ],
+          };
+
+          // Debugging: Log the request data to ensure it's correct
+          console.log("Request Data:", requestData);
+
+          // Send the data to the API
+          fetch("http://localhost:8000/api/employee_attrition", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestData),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+            })
+                        .then((data) => {
+              console.log("API Response:", data); // Debug log
+            
+              const resultSection = document.getElementById("resultSection");
+              const resultMessage = document.getElementById("resultMessage");
+            
+              // Check if the response contains the 'prediction' key
+              if (data.prediction && Array.isArray(data.prediction)) {
+                // Extract the first prediction object
+                const attritionProbability = data.prediction[0]; // Assuming the first element is the prediction object
+            
+                // Check if attritionProbability is an object
+                if (typeof attritionProbability === "object") {
+                  // Extract the value for "1" (Attrition probability)
+                  const yesAttrition = attritionProbability["1"];
+            
+                  // Display the attrition result based on the value of "1"
+                  if (yesAttrition === 100.0) {
+                    resultMessage.textContent = "100% Attrition";
+                  } else if (yesAttrition === 0.0) {
+                    resultMessage.textContent = "0% Attrition";
+                  } else {
+                    resultMessage.textContent = `${yesAttrition}% Attrition`;
+                  }
+                } else {
+                  resultMessage.textContent = "Unexpected prediction format.";
+                }
+              } else {
+                alert("Unexpected response format from server.");
+                console.error("Malformed response:", data);
+              }
+            
+              // Display the result section
+              resultSection.style.display = "block";
+            });
+        });
+    </script>
+  </body>
+</html>
